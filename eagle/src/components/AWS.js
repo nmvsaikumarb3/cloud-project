@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import { Button, ButtonGroup, Box, Card, Paper} from "@mui/material";
+import { Button, Card, Paper, Grid} from "@mui/material";
 import Typography from "@mui/material/Typography";
 import axios from "axios";
+import Image from "C:/Users/nallu/cloud-project/eagle/src/components/aws.png"
 
 export default function AWS() {
   const [data1,setdata1]=useState(null);
@@ -26,88 +27,58 @@ export default function AWS() {
       setdata2(responce.name)
     });
   };
+  const styles = {
+    paperContainer: {
+        backgroundImage: `url(${Image})`,
+        backgroundSize: "cover",
+        height: "100vh",
+    }
+};
 
   return (
-    <>
-      <Typography variant="h4" sx={{ fontWeight: "bold", textAlign: "center" }}>
+     <Paper style={styles.paperContainer}>
+     <Grid
+      container
+      flexDirection={"column"}
+      sx={{ color: "black", height: "102.3vh"}}
+      spacing={4}
+      
+    >
+    <Grid item sx={{color:"cyan"}}>
+      <Typography variant="h4" sx={{ fontWeight: "bold",borderRadius:"27px", textAlign: "center" }}>
         AWS cloud event
       </Typography>
-      <div>
-        <Button variant="contained" href="/triggercloudevent">
+      </Grid>
+      <Grid item spacing={5}>
+        <Button variant="contained" sx={{borderRadius:"27px"}} href="/triggercloudevent">
           Back
         </Button>
-      </div>
-      <ButtonGroup style={{ display: "flex", flexDirection: "row" }}>
-        <div
-          style={{
-            justifyContent: "center",
-            margin: "auto",
-            width: "50%",
-            alignItems: "left",
-            paddingTop: "5%",
-            paddingLeft: "15%",
-          }}
-        >
-          <Box>
+        </Grid>
+      <Grid container item flexDirection="column"  spacing={12} > 
+      <Grid container item flexDirection={"row"} spacing={2} >
             <Button
               variant="contained"
-              style={{ alignItems: "center" }}
+              sx={{ alignItems: "center",borderRadius:"27px" }}
               onClick={CloudTrial}
             >
               CloudTrial
             </Button>
-          </Box>
-          
-        </div>
-        <div style={{
-            justifyContent: "center",
-            margin: "auto",
-            width: "50%",
-            alignItems: "left",
-            paddingTop: "5%",
-            paddingLeft: "15%",
-          }}>
-            {data1 !== null && <Paper sx={{fontWeight:"bold",fontStyle:"italic"}}>{data1}</Paper>}
-          </div>
-        
-      </ButtonGroup>
-      <br />
-      <br />
-      <br />
-      <ButtonGroup style={{ display: "flex", flexDirection: "row" }}>
-        <div
-          style={{
-            justifyContent: "center",
-            margin: "auto",
-            width: "50%",
-            alignItems: "left",
-            paddingTop: "5%",
-            paddingLeft: "15%",
-          }}
-        >
-          <Box>
+            {data1 !== null && <Card sx={{fontWeight:"bold",color:"black",fontStyle:"italic"}}>{data1}</Card>}
+ 
+      </Grid>
+      <Grid item>
             <Button
               variant="contained"
-              style={{ alignItems: "center" }}
+              sx={{ alignItems: "center",borderRadius:"27px" }}
               onClick={VPC}
             >
               VPC
             </Button>
-          </Box>
-          
-        </div>
-        <div style={{
-            justifyContent: "center",
-            margin: "auto",
-            width: "50%",
-            alignItems: "left",
-            paddingTop: "5%",
-            paddingLeft: "15%",
-          }}>
-            {data2 !== null && <Card variant="outlined">{data2}</Card>}
-          </div>
+            {data2 !== null && <Card sx={{fontWeight:"bold",color:"black",fontStyle:"italic"}}>{data2}</Card>}
       
-      </ButtonGroup>
-    </>
+      </Grid>
+      </Grid>
+      </Grid> 
+      </Paper>
   );
 }

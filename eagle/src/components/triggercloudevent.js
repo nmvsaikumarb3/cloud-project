@@ -1,14 +1,17 @@
-import { Button, Card, Grid } from "@mui/material";
+import { Button, Grid } from "@mui/material";
 import React, { useState } from "react";
 import AWS from "../components/AWS";
 import Asure from "../components/Asure";
 import O365 from "../components/O365";
 import Typography from "@mui/material/Typography";
 
+
 function Triggercloudevent() {
   const [buttonON, setButtonON] = useState(false);
+  
 
   return (
+  
     <Grid
       container
       flexDirection={"column"}
@@ -30,14 +33,6 @@ function Triggercloudevent() {
         </Typography>
       </Grid>
       <Grid item>
-        {/* <Card
-          style={{
-            width: "500px",
-            backgroundColor: "lightskyblue",
-            height: "350px",
-            padding: "20px",
-          }}
-        > */}
         <Grid container spacing={3} sx={{ height: "100%" }}>
           <Grid
             container
@@ -51,7 +46,7 @@ function Triggercloudevent() {
             <Grid item container>
               <Button
                 variant="contained"
-                sx={{fontSize:"1.875rem"}}
+                sx={{fontSize:"1.000rem",borderRadius:"63px"}}
                 onClick={() => setButtonON(!buttonON)}
               >
                 Triggercloudevent
@@ -59,13 +54,13 @@ function Triggercloudevent() {
             </Grid>
 
             {buttonON && (
-              <Grid container item flexDirection="column" spacing={3}>
+              <Grid container item flexDirection="column"  spacing={3}>
                 <Grid item container>
                   <Button
                     variant="contained"
                     onClick={AWS}
                     href="/AWS"
-                    sx={{ width: "100%" }}
+                    sx={{ width: "100%",borderRadius:"27px" }}
                   >
                     AWS
                   </Button>
@@ -75,7 +70,7 @@ function Triggercloudevent() {
                     variant="contained"
                     onClick={Asure}
                     href="/Asure"
-                    sx={{ width: "100%" }}
+                    sx={{ width: "100%",borderRadius:"27px" }}
                   >
                     AZURE
                   </Button>
@@ -85,7 +80,7 @@ function Triggercloudevent() {
                     variant="contained"
                     onClick={O365}
                     href="/O365"
-                    sx={{ width: "100%" }}
+                    sx={{ width: "100%",borderRadius:"27px" }}
                   >
                     O365
                   </Button>
@@ -94,7 +89,7 @@ function Triggercloudevent() {
             )}
           </Grid>
           <Grid item container alignItems="end">
-            <Button variant="contained" href="/login">
+            <Button variant="contained" sx={{borderRadius:"40px"}} href="/login">
               Back
             </Button>
           </Grid>

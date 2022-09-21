@@ -4,8 +4,10 @@ import Box from "@mui/material/Box";
 import Paper from "@mui/material/Paper";
 import TextField from "@mui/material/TextField";
 import Typography from "@mui/material/Typography";
-import { Button } from "@mui/material";
+import { Button ,Alert,Stack} from "@mui/material";
 import { useNavigate } from "react-router-dom";
+import Image from "C:/Users/nallu/cloud-project/eagle/src/components/login/cloud.jpg"
+
 
 export default function Login() {
   const [emailText, setEmailText] = useState("");
@@ -23,9 +25,26 @@ export default function Login() {
       return false
     })
   };
+  const styles = {
+    paperContainer: {
+        backgroundImage: `url(${Image})`,
+        backgroundSize: "cover",
+        height: "100vh",
+        
+    }
+};
+const cancelmsg=()=>{
+  return(
+    <Stack spacing={2}>
+      <Alert severity="warning">Please login to the application</Alert>
+    </Stack>
+
+  )
+}
   return (
     <>
-    <Typography variant="h3" sx={{ fontWeight: "bold", textAlign: "center" }}>CLOUD TECH PROTAL</Typography>
+      <Paper style={styles.paperContainer}>
+    <Typography variant="h3" sx={{ fontWeight: "bold", color:'cyan',textAlign: "center" }}>CLOUD TECH PROTAL</Typography>
     <Box
       sx={{
         display: "flex",
@@ -35,10 +54,10 @@ export default function Login() {
         height: "100vh",
       }}
     >
-      <Paper elevation={10} sx={{ height: "20rem",
+      <Paper elevation={10} sx={{ height: "20rem",backgroundColor:"skyblue",
       // width: "30rem", 
       p: 5 }}>
-        <Typography variant="h3" sx={{ fontWeight: "100%", textAlign: "center" }}>Login</Typography>
+        <Typography variant="h3" sx={{ fontWeight: "bold", textAlign: "center" }}>Login</Typography>
         <Grid container flexDirection={"column"} sx={{ width: "15rem", mt: 5,color:"black" }}>
           <TextField
             sx={{color:"black"}}
@@ -64,6 +83,7 @@ export default function Login() {
           <Grid item>
             <Button
               variant="contained"
+              sx={{borderRadius:"27px"}}
               onClick={() => {
                addNewUser(emailText, passwordText);
               }}
@@ -72,17 +92,12 @@ export default function Login() {
             </Button>
           </Grid>
           <Grid item>
-            <Button variant="outlined">Cancel</Button>
+            <Button variant="contained" sx={{borderRadius:"27px"}} onClick={cancelmsg}>Cancel</Button>
           </Grid>
         </Grid>
-        {/* <Button
-          sx={{ fontSize: "12px", color: "#949494", mt: 2 }}
-          href={"/create-account"}
-        >
-          Create an Account
-        </Button> */}
       </Paper>
     </Box>
+    </Paper>
     </>
   );
 }

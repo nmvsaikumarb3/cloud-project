@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import { Button, ButtonGroup, Box, Card } from "@mui/material";
+import { Button, ButtonGroup, Box, Card ,Paper} from "@mui/material";
 import Typography from "@mui/material/Typography";
 import axios from "axios";
+import Image from "C:/Users/nallu/cloud-project/eagle/src/components/azure.png"
 
 export default function Asure() {
   const [sample, setsample] = useState(null);
@@ -32,9 +33,16 @@ export default function Asure() {
         setsample1(responce.data);
       });
   };
+  const styles = {
+    paperContainer: {
+        backgroundImage: `url(${Image})`,
+        backgroundSize: "cover",
+        height: "100vh",
+    }
+};
   return (
-    <>
-      <Typography variant="h4" sx={{ fontWeight: "bold", textAlign: "center" }}>
+    <Paper style={styles.paperContainer}>
+      <Typography variant="h4" sx={{ fontWeight: "bold",color:"cyan", textAlign: "center" }}>
         Azure cloud event
       </Typography>
       <div>
@@ -110,6 +118,6 @@ export default function Asure() {
             {sample1 !== null && <Card variant="outlined">{sample1}</Card>}
           </div>
       </ButtonGroup>
-    </>
+      </Paper>
   );
 }
